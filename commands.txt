@@ -1,0 +1,15 @@
+docker-compose up --build
+docker-compose up
+
+celery -A backend flower --broker=redis://localhost:6379/0 --port=5555
+
+
+
+{
+    "coin":"bitcoin",
+    "message":"help me check bitcoin price",
+    "timeframe":"24",
+    "input_payload"{
+        "email":"michaelchinemelu24@gmail.com",
+    }
+}

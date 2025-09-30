@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Header from './components/header';
 import Submission from './components/submission';
 import Hero from './components/hero';

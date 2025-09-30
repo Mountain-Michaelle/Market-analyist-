@@ -1,7 +1,7 @@
 import React, { JSX } from 'react';
 
 interface ReportProps {
-  emailReport: any; // the backend object
+  emailReport: string[]; // the backend object
   isOpen: boolean;
   handleIsOpen: () => void;
 }

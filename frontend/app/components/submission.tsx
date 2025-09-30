@@ -113,6 +113,7 @@ const Submission: React.FC = () => {
 
               console.log("Final result:", statusData.result.email_status);
               setEmailReport(statusData.result)
+              resetForm()
             } else if (statusData.celery_state === "FAILURE") {
               clearInterval(interval);
               setStageMessage("❌ Task failed.");

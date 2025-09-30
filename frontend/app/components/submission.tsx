@@ -65,13 +65,13 @@ const Submission: React.FC = () => {
       description: "",
     },
     validationSchema,
-    onSubmit: async (values, { resetForm }) => {
+    onSubmit: async (values, {resetForm }) => {
       setLoading(true);
       setStageMessage("⏳ Submitting request...");
 
       try {
         // ✅ Call backend API
-        const response = await fetch("http://localhost:8000/api/analyze/", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_LINK}/api/analyze/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const Submission: React.FC = () => {
 
           // Poll the status endpoint every 2s
           const interval = setInterval(async () => {
-            const res = await fetch(`http://localhost:8000/api/status/${taskId}/`);
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_LINK}/api/status/${taskId}/`);
             const statusData = await res.json();
 
             // show progress step if provided

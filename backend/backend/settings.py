@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,11 +79,17 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default= config("DATABASE_URL")  # Railway will set this
+    )
 }
 
 
@@ -130,5 +138,6 @@ REDIS_URL = config("REDIS_URL")
 HF_API_KEY = config("HF_API_KEY")
 RESEND_API_KEY = config("RESEND_API_KEY")
 COINGECKO_USER_AGENT = config("COINGECKO_USER_AGENT")
-CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+# CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+CELERY_BROKER_URL = config("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')

@@ -2,8 +2,8 @@
 import React, { useState, useEffect, CSSProperties} from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Input } from "../../components/ui/input";
+import { Textarea } from "../../components/ui/textarea";
 import { SelectData } from "./select";
 import { coins } from "../components/data/coins";
 import { timeframes } from "../components/data/timeframe";

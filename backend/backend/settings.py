@@ -30,6 +30,9 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "backend-django-1", "*"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://django-production-4aea.up.railway.app",
+]
 
 
 # Application definition
@@ -43,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'analysis',
     'corsheaders',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -135,9 +139,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REDIS_URL = config("REDIS_URL")
-HF_API_KEY = config("HF_API_KEY")
 RESEND_API_KEY = config("RESEND_API_KEY")
 COINGECKO_USER_AGENT = config("COINGECKO_USER_AGENT")
-# CELERY_BROKER_URL = config('CELERY_BROKER_URL')
-CELERY_BROKER_URL = config("CELERY_BROKER_URL")
-CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')
+
+CELERY_BROKER_URL = config("REDIS_URL")  # Upstash Redis
+CELERY_RESULT_BACKEND = config("REDIS_URL")  # same Redis as broker
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 300  # optional, seconds

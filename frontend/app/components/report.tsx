@@ -1,16 +1,17 @@
 import React, { JSX } from 'react';
 
-interface ReportProps {
-  emailReport: string[]; // the backend object
+type ReportData = string | number | boolean | ReportDataObject;
+interface ReportDataObject {
+  emailReport: string[]  // the backend object
   isOpen: boolean;
   handleIsOpen: () => void;
 }
 
-const Report = ({ emailReport, isOpen, handleIsOpen }: ReportProps) => {
+const Report = ({ emailReport, isOpen, handleIsOpen }: ReportDataObject) => {
   if (!emailReport || !isOpen) return null;
 
   // Recursive render for nested objects
-  const renderRows = (obj: any, parentKey = ""): JSX.Element[] => {
+  const renderRows = (obj: ReportData | ReportData[], parentKey = ""): JSX.Element[] => {
     return Object.entries(obj).flatMap(([key, value]) => {
       const displayKey = parentKey ? `${parentKey} → ${key}` : key;
 

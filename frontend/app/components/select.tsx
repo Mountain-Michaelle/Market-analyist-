@@ -11,11 +11,10 @@ import {
 } from "@/components/ui/select"
 import { FormikProps } from "formik";
 
-
 interface DataType {
     type: string,
     datas: string[],
-    formik: FormikProps<any>,
+    formik: FormikProps<any>
     name: string,
 }
 

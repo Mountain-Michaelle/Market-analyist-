@@ -35,7 +35,7 @@ const validationSchema: Yup.Schema<FormValues> = Yup.object({
 const Submission: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [stageMessage, setStageMessage] = useState<string | null>(null);
-  const [emailReport, setEmailReport] = useState<any>()
+const [emailReport, setEmailReport] = useState([]);
   const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {

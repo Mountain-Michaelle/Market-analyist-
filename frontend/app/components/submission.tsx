@@ -192,7 +192,7 @@ const [emailReport, setEmailReport] = useState([]);
         </div>
 
         {/* Submit */}
-        <div className="flex w-full justify-center mt-10">
+        <div className="flex w-full justify-center mt-10 mb-5">
           <button
             type="submit"
             className="border p-2 pl-5 pr-5 flex items-center gap-2"

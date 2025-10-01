@@ -7,7 +7,7 @@ const Header = () => {
     <div className='p-3 px-5 flex justify-between shadow-md'>
         <div className='flex font-bold gap-2 items-center'>
             <Image src={'/logo.png'} width={30} height={30} alt="" />
-            <h2>MTP-ALY</h2>
+            <h2>TrendSight</h2>
         </div>
 
         <div className='flex font-bold gap-3 items-center'>

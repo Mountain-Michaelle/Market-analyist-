@@ -8,7 +8,7 @@ const Hero = () => {
       Know. Analyze. Decide.
     </h1>
     <p className="mt-3 text-lg sm:text-base text-blue-900 font-bold md:text-lg lg:text-xl">
-      Automated market analysis delivered to inboxes.  </p>
+      Automated market analysis delivered to inbox.  </p>
   </div>
 </div>
 

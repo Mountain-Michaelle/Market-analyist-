@@ -1,3 +1,7 @@
+# trendnaci.com
+# trendrace.com
+# nfcsimt.com
+
 def call_openai_analysis(system_prompt, user_prompt, max_tokens=400):
     resp = client.chat.completions.create(
         model= "gpt-4o-mini", # substitute with available model

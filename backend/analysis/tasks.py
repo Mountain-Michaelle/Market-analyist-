@@ -78,9 +78,9 @@ def mock_ai_analysis(indicators, fundamentals):
 def send_resend_email(to_email, subject, html_body):
     try:
         response = resend.Emails.send({
-            "from": "Acme <onboarding@resend.dev>",
+            "from": "Report <info@michealchinemeluugwu.xyz>",
             "to": [to_email],  # list of recipients
-            "subject": subject,
+            "subject": subject,     
             "html": html_body
         })
         # print("Resend response:", response)  # debug

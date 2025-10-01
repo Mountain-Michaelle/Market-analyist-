@@ -1,5 +1,4 @@
-import * as React from "react"
-
+import * as React from "react";
 import {
   Select,
   SelectContent,
@@ -8,23 +7,27 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../../components/ui/select"
+} from "@/components/ui/select";
 import { FormikProps } from "formik";
 
-interface DataType {
-    type: string,
-    datas: string[],
-    formik: FormikProps<any>
-    name: string,
+// Generic form values type
+interface FormValues {
+  [key: string]: string;
 }
 
-export function SelectData({type, name, datas, formik}:DataType) {
+// Props for SelectData
+interface DataType<T> {
+  type: string;
+  datas: string[];
+  formik: FormikProps<T>;
+  name: keyof T; // name must be a valid key of the form values
+}
 
+export function SelectData<T>({ type, name, datas, formik }: DataType<T>) {
   return (
     <Select
-    value={formik.values[name]}
-    onValueChange={(val) => formik.setFieldValue(name, val)}
-
+      value={formik.values[name] as unknown as string} // safe assertion
+      onValueChange={(val: string) => formik.setFieldValue(name as string, val)}
     >
       <SelectTrigger className="w-full">
         <SelectValue placeholder="Select" />
@@ -40,5 +43,5 @@ export function SelectData({type, name, datas, formik}:DataType) {
         </SelectGroup>
       </SelectContent>
     </Select>
-  )
+  );
 }

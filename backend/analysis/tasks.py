@@ -9,8 +9,8 @@ import resend
 from decouple import config
 import datetime
 import os
-import requests
 import numpy as np
+from .render_html import render_report_html
 
 cg = CoinGeckoAPI()
 resend.api_key = config('RESEND_API_KEY')
@@ -191,7 +191,13 @@ def run_analysis_task(self, analyze_request_id):
                 meta={"step": f"Sending report to {to_email}...", "coin": ar.coin}
             )
             subject = f"{ar.coin.upper()} Market Outlook ({ar.timeframe})"
-            html_body = f"<h2>{ar.coin.upper()} Market Outlook</h2><pre>{ai_text}</pre>"
+            # html_body = f"<h2>{ar.coin.upper()} Market Outlook</h2><pre>{ai_text}</pre>"
+            report_dict = {
+                "Indicators": indicators,
+                "Fundamentals": fundamentals,
+                "AI Analysis": ai_text.split("\n")
+}
+            html_body = render_report_html(report_dict)
 
             result = send_resend_email(to_email, subject, html_body)
             

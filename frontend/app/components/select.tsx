@@ -29,7 +29,7 @@ export function SelectData<T>({ type, name, datas, formik }: DataType<T>) {
       value={formik.values[name] as unknown as string} // safe assertion
       onValueChange={(val: string) => formik.setFieldValue(name as string, val)}
     >
-      <SelectTrigger className="w-full">
+      <SelectTrigger className="w-full p-5">
         <SelectValue placeholder="Select" />
       </SelectTrigger>
       <SelectContent>

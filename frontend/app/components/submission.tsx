@@ -133,7 +133,7 @@ const [emailReport, setEmailReport] = useState([]);
   });
 
   return (
-    <div className="mt-8 flex justify-center">
+    <div className="mt-5 md:mt-8 flex justify-center">
       <form
         onSubmit={formik.handleSubmit}
         className="flex flex-col m-10 md:m-0 w-full max-w-3xl"
@@ -145,6 +145,7 @@ const [emailReport, setEmailReport] = useState([]);
             <Input
               type="text"
               placeholder="Your email"
+              className='p-5'
               {...formik.getFieldProps("email")}
             />
             {formik.touched.email && formik.errors.email && (
